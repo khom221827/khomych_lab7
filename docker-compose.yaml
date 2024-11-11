@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  db:
+    container_name: db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=root
+    image: postgres:16.0-alpine3.18
+    volumes:
+      - ./data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: Homych@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: pass
+    ports:
+      - "5050:80"
